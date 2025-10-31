@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "스텝포워드",
+  "name": "스텝포워드 - AI 기반 맞춤형 건강 관리",
+  "description": "AI 기반 맞춤형 운동 추천 및 건강 관리 서비스",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +21,8 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#667eea",
+  "background_color": "#f8f9fa",
+  "orientation": "portrait",
+  "categories": ["health", "fitness", "lifestyle"]
 }
