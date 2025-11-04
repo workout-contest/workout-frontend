@@ -5,7 +5,7 @@
 
 import tokenManager from '../utils/tokenManager';
 
-const API_BASE_URL = 'http://15.164.135.137:8000';
+const API_BASE_URL = 'https://euics.kr';
 
 class ApiService {
   /**
