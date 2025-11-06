@@ -77,6 +77,10 @@ const WelcomeSubtitle = styled.p`
   margin-bottom: var(--spacing-lg);
   position: relative;
   z-index: 1;
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+  }
 `;
 
 const HealthStatusCard = styled.div`
@@ -97,6 +101,11 @@ const SectionTitle = styled.h2`
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    flex-wrap: wrap;
+  }
 `;
 
 const BMICard = styled.div`
@@ -105,6 +114,10 @@ const BMICard = styled.div`
   padding: var(--spacing-lg);
   text-align: center;
   margin-bottom: var(--spacing-lg);
+
+  @media (max-width: 768px) {
+    padding: var(--spacing-md);
+  }
 `;
 
 const BMIValue = styled.div`
@@ -113,6 +126,10 @@ const BMIValue = styled.div`
   font-weight: 700;
   color: var(--primary-color);
   margin-bottom: var(--spacing-sm);
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
 `;
 
 const BMICategory = styled.div`
@@ -128,6 +145,10 @@ const BMIStatus = styled.div`
   font-size: 0.9rem;
   color: var(--text-muted);
   line-height: 1.6;
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+  }
 `;
 
 const GridContainer = styled.div`
@@ -182,6 +203,10 @@ const CardIcon = styled.div`
   font-size: 2.5rem;
   margin-bottom: var(--spacing-md);
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
 const CardTitle = styled.h3`
@@ -190,6 +215,10 @@ const CardTitle = styled.h3`
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: var(--spacing-sm);
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const CardDescription = styled.p`
@@ -199,6 +228,11 @@ const CardDescription = styled.p`
   line-height: 1.6;
   margin-bottom: var(--spacing-md);
   flex-grow: 1;
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
 `;
 
 const ActionButton = styled.button`
@@ -213,6 +247,7 @@ const ActionButton = styled.button`
   cursor: pointer;
   transition: all 0.3s ease;
   width: 100%;
+  min-height: 44px; /* 터치 영역 확보 */
 
   &:hover {
     transform: translateY(-2px);
@@ -221,6 +256,87 @@ const ActionButton = styled.button`
 
   &:active {
     transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+`;
+
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: var(--spacing-md);
+
+  @media (max-width: 768px) {
+    padding: var(--spacing-sm);
+    align-items: flex-start;
+    padding-top: 10vh;
+  }
+`;
+
+const ModalContent = styled.div`
+  background: var(--bg-primary);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  overflow: auto;
+  box-shadow: var(--shadow-lg);
+
+  @media (max-width: 768px) {
+    padding: var(--spacing-md);
+    max-width: 100%;
+    max-height: 85vh;
+    border-radius: var(--radius-lg);
+  }
+`;
+
+const ModalHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+
+  @media (max-width: 768px) {
+    margin-bottom: var(--spacing-md);
+  }
+`;
+
+const ModalTitle = styled.h2`
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+`;
+
+const ModalCloseButton = styled.button`
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  padding: 0;
+  min-width: 32px;
+  min-height: 32px;
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
   }
 `;
 
@@ -387,66 +503,16 @@ const Home = ({ userInfo: propUserInfo }) => {
 
           {/* AI 추천 모달 */}
           {showAIRecommendation && (
-            <div
-              style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                zIndex: 1000,
-              }}
-              onClick={() => setShowAIRecommendation(false)}
-            >
-              <div
-                style={{
-                  background: 'var(--bg-primary)',
-                  borderRadius: 'var(--radius-xl)',
-                  padding: 'var(--spacing-xl)',
-                  maxWidth: '600px',
-                  width: '90%',
-                  maxHeight: '80vh',
-                  overflow: 'auto',
-                  boxShadow: 'var(--shadow-lg)',
-                }}
-                onClick={e => e.stopPropagation()}
-              >
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    marginBottom: 'var(--spacing-lg)',
-                  }}
-                >
-                  <h2
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: '1.5rem',
-                      fontWeight: '600',
-                      color: 'var(--text-primary)',
-                      margin: 0,
-                    }}
-                  >
-                    🤖 오늘의 AI 추천
-                  </h2>
-                  <button
+            <ModalOverlay onClick={() => setShowAIRecommendation(false)}>
+              <ModalContent onClick={e => e.stopPropagation()}>
+                <ModalHeader>
+                  <ModalTitle>🤖 오늘의 AI 추천</ModalTitle>
+                  <ModalCloseButton
                     onClick={() => setShowAIRecommendation(false)}
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      fontSize: '1.5rem',
-                      cursor: 'pointer',
-                      color: 'var(--text-secondary)',
-                    }}
                   >
                     ×
-                  </button>
-                </div>
+                  </ModalCloseButton>
+                </ModalHeader>
 
                 {/* 오늘의 추천 운동 */}
                 <div
@@ -524,72 +590,22 @@ const Home = ({ userInfo: propUserInfo }) => {
                       : '추천 운동 시작하기'}
                   </button>
                 </div>
-              </div>
-            </div>
+              </ModalContent>
+            </ModalOverlay>
           )}
 
           {/* 추천 운동 결과 모달 */}
           {showRecommendations && (
-            <div
-              style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                zIndex: 1001,
-              }}
-              onClick={() => setShowRecommendations(false)}
-            >
-              <div
-                style={{
-                  background: 'var(--bg-primary)',
-                  borderRadius: 'var(--radius-xl)',
-                  padding: 'var(--spacing-xl)',
-                  maxWidth: '600px',
-                  width: '90%',
-                  maxHeight: '80vh',
-                  overflow: 'auto',
-                  boxShadow: 'var(--shadow-lg)',
-                }}
-                onClick={e => e.stopPropagation()}
-              >
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    marginBottom: 'var(--spacing-lg)',
-                  }}
-                >
-                  <h2
-                    style={{
-                      fontFamily: 'var(--font-primary)',
-                      fontSize: '1.5rem',
-                      fontWeight: '600',
-                      color: 'var(--text-primary)',
-                      margin: 0,
-                    }}
-                  >
-                    🤖 AI 추천 운동
-                  </h2>
-                  <button
+            <ModalOverlay onClick={() => setShowRecommendations(false)}>
+              <ModalContent onClick={e => e.stopPropagation()}>
+                <ModalHeader>
+                  <ModalTitle>🤖 AI 추천 운동</ModalTitle>
+                  <ModalCloseButton
                     onClick={() => setShowRecommendations(false)}
-                    style={{
-                      background: 'none',
-                      border: 'none',
-                      fontSize: '1.5rem',
-                      cursor: 'pointer',
-                      color: 'var(--text-secondary)',
-                    }}
                   >
                     ×
-                  </button>
-                </div>
+                  </ModalCloseButton>
+                </ModalHeader>
 
                 <div
                   style={{
@@ -710,8 +726,8 @@ const Home = ({ userInfo: propUserInfo }) => {
                 >
                   닫기
                 </button>
-              </div>
-            </div>
+              </ModalContent>
+            </ModalOverlay>
           )}
         </>
       ) : (

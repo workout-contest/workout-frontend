@@ -29,12 +29,20 @@ const Title = styled.h1`
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: var(--spacing-sm);
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const Subtitle = styled.p`
   font-family: var(--font-primary);
   font-size: 1rem;
   opacity: 0.9;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const FilterSection = styled.div`
@@ -72,10 +80,17 @@ const FilterButton = styled.button`
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  min-height: 40px; /* 터치 영역 확보 */
 
   &:hover {
     border-color: var(--primary-color);
     transform: translateY(-1px);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    padding: var(--spacing-sm) var(--spacing-sm);
+    min-height: 44px;
   }
 `;
 
@@ -83,6 +98,11 @@ const VideoGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: var(--spacing-lg);
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
 `;
 
 const VideoCard = styled.div`

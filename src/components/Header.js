@@ -45,10 +45,18 @@ const LogoutButton = styled.button`
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  min-height: 40px;
+  min-width: 80px;
 
   &:hover {
     transform: translateY(-1px);
     box-shadow: var(--shadow-sm);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    min-height: 44px;
   }
 `;
 

@@ -30,12 +30,21 @@ const Title = styled.h1`
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: var(--spacing-sm);
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const Subtitle = styled.p`
   font-family: var(--font-primary);
   font-size: 1rem;
   opacity: 0.9;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
 `;
 
 const NutritionSection = styled.div`
@@ -92,6 +101,10 @@ const MonthYear = styled.h2`
   font-weight: 600;
   color: var(--text-primary);
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const CalendarNav = styled.button`
@@ -103,10 +116,18 @@ const CalendarNav = styled.button`
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  min-height: 40px;
+  min-width: 60px;
 
   &:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    min-height: 44px;
   }
 `;
 
@@ -115,6 +136,10 @@ const CalendarGrid = styled.div`
   grid-template-columns: repeat(7, 1fr);
   gap: var(--spacing-sm);
   margin-bottom: var(--spacing-lg);
+
+  @media (max-width: 768px) {
+    gap: var(--spacing-xs);
+  }
 `;
 
 const DayHeader = styled.div`
@@ -126,6 +151,11 @@ const DayHeader = styled.div`
   padding: var(--spacing-sm);
   background: var(--bg-tertiary);
   border-radius: var(--radius-sm);
+
+  @media (max-width: 768px) {
+    font-size: 0.75rem;
+    padding: var(--spacing-xs);
+  }
 `;
 
 const CalendarDay = styled.div`
@@ -143,6 +173,11 @@ const CalendarDay = styled.div`
   position: relative;
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  @media (max-width: 768px) {
+    min-height: 100px;
+    padding: var(--spacing-xs);
+  }
 
   &:hover {
     border-color: #667eea;
@@ -205,6 +240,12 @@ const MealItem = styled.div`
   justify-content: space-between;
   box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);
   min-height: 28px;
+
+  @media (max-width: 768px) {
+    font-size: 0.65rem;
+    padding: 2px var(--spacing-xs);
+    min-height: 24px;
+  }
 
   &:hover {
     transform: translateY(-1px) scale(1.02);
@@ -328,6 +369,11 @@ const FoodCard = styled.div`
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
+  min-height: 44px; /* 터치 영역 확보 */
+
+  @media (max-width: 768px) {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
 
   &:hover {
     transform: translateX(4px) scale(1.02);
@@ -410,6 +456,13 @@ const SaveButton = styled.button`
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
+  min-height: 50px; /* 터치 영역 확보 */
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: var(--spacing-md);
+    min-height: 44px;
+  }
   transition: all 0.3s ease;
   width: 100%;
   margin-bottom: var(--spacing-lg);

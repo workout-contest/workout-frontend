@@ -29,12 +29,21 @@ const Title = styled.h1`
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: var(--spacing-sm);
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const Subtitle = styled.p`
   font-family: var(--font-primary);
   font-size: 1rem;
   opacity: 0.9;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
 `;
 
 const AnalysisSection = styled.div`
@@ -60,6 +69,11 @@ const StatsGrid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: var(--spacing-md);
   margin-bottom: var(--spacing-lg);
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+  }
 `;
 
 const StatCard = styled.div`
@@ -100,6 +114,11 @@ const TopWorkoutsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: var(--spacing-md);
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
 `;
 
 const TopWorkoutCard = styled.div`
